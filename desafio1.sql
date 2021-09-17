@@ -19,30 +19,17 @@ VALUES
 CREATE TABLE usuarios(
 usuario_id INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(50) NOT NULL,
-idade TINYINT NOT NULL
-) ENGINE = InnoDB;
-
-INSERT INTO usuarios (usuario_id, nome, idade)
-VALUES
-  (1, 'Thati', 23),
-  (2, 'Cintia', 35),
-  (3, 'Bill', 20),
-  (4, 'Roger', 45);
-
-CREATE TABLE usuario_plano(
-usuario_id INT UNIQUE NOT NULL,
+idade TINYINT NOT NULL,
 plano_id INT NOT NULL,
-CONSTRAINT PRIMARY KEY (usuario_id, plano_id),
-FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (plano_id) REFERENCES planos(plano_id)
 ) ENGINE = InnoDB;
 
-INSERT INTO usuario_plano (usuario_id, plano_id)
+INSERT INTO usuarios (usuario_id, nome, idade, plano_id)
 VALUES
-  (1, 1),
-  (2, 2),
-  (3, 3),
-  (4, 1);
+  (1, 'Thati', 23, 1),
+  (2, 'Cintia', 35, 2),
+  (3, 'Bill', 20, 3),
+  (4, 'Roger', 45, 1);
 
 CREATE TABLE artistas(
 artista_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -59,6 +46,7 @@ VALUES
 CREATE TABLE usuario_artista(
 usuario_id INT NOT NULL,
 artista_id INT NOT NULL,
+CONSTRAINT PRIMARY KEY (usuario_id, artista_id),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
 FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) ENGINE = InnoDB;
@@ -76,87 +64,46 @@ VALUES
 
 CREATE TABLE albuns(
 album_id INT PRIMARY KEY AUTO_INCREMENT,
-nome VARCHAR(50) NOT NULL
-) ENGINE = InnoDB;
-
-INSERT INTO albuns (album_id, nome)
-VALUES
-  (1, 'Envious'),
-  (2, 'Exuberant'),
-  (3, 'Hallowed Steam'),
-  (4, 'Incandescent'),
-  (5, 'Temporary Culture');
-
-CREATE TABLE artista_album(
+nome VARCHAR(50) NOT NULL,
 artista_id INT NOT NULL,
-album_id INT UNIQUE NOT NULL,
-CONSTRAINT PRIMARY KEY (artista_id, album_id),
-FOREIGN KEY (artista_id) REFERENCES artistas(artista_id),
-FOREIGN KEY (album_id) REFERENCES albuns(album_id)
+FOREIGN KEY (artista_id) REFERENCES artistas(artista_id)
 ) ENGINE = InnoDB;
 
-INSERT INTO artista_album (artista_id ,album_id)
+INSERT INTO albuns (album_id, nome, artista_id)
 VALUES
-  (1, 1),
-  (1, 2),
-  (2, 3),
-  (3, 4),
-  (4, 5);
+  (1, 'Envious', 1),
+  (2, 'Exuberant', 1),
+  (3, 'Hallowed Steam', 2),
+  (4, 'Incandescent', 3),
+  (5, 'Temporary Culture', 4);
 
 CREATE TABLE cancoes(
 cancao_id INT PRIMARY KEY AUTO_INCREMENT,
-nome VARCHAR(50) NOT NULL
-) ENGINE = InnoDB;
-
-INSERT INTO cancoes (cancao_id, nome)
-VALUES
-  (1, 'Soul For Us'),
-  (2, 'Reflections Of Magic'),
-  (3, 'Dance With Her Own'),
-  (4, 'Troubles Of My Inner Fire'),
-  (5, 'Time Fireworks'),
-  (6, 'Magic Circus'),
-  (7, 'Honey, So Do I'),
-  (8, "Sweetie, Let\'s Go Wild"),
-  (9, 'She Knows'),
-  (10, 'Fantasy For Me'),
-  (11, 'Celebration Of More'),
-  (12, 'Rock His Everything'),
-  (13, 'Home Forever'),
-  (14, 'Diamond Power'),
-  (15, "Honey, Let's Be Silly"),
-  (16, 'Thang Of Thunder'),
-  (17, 'Words Of Her Life'),
-  (18, 'Without My Streets');
-
-CREATE TABLE cancao_album(
-cancao_id INT UNIQUE NOT NULL,
+nome VARCHAR(50) NOT NULL,
 album_id INT NOT NULL,
-CONSTRAINT PRIMARY KEY (cancao_id, album_id),
-FOREIGN KEY (cancao_id) REFERENCES cancoes(cancao_id),
 FOREIGN KEY (album_id) REFERENCES albuns(album_id)
 ) ENGINE = InnoDB;
 
-INSERT INTO cancao_album (cancao_id, album_id)
+INSERT INTO cancoes (cancao_id, nome, album_id)
 VALUES
-  (1, 1),
-  (2, 1),
-  (3, 1),
-  (4, 2),
-  (5, 2),
-  (6, 3),
-  (7, 3),
-  (8, 3),
-  (9, 3),
-  (10, 4),
-  (11, 4),
-  (12, 4),
-  (13, 4),
-  (14, 4),
-  (15, 4),
-  (16, 5),
-  (17, 5),
-  (18, 5);
+  (1, 'Soul For Us', 1),
+  (2, 'Reflections Of Magic', 1),
+  (3, 'Dance With Her Own', 1),
+  (4, 'Troubles Of My Inner Fire', 2),
+  (5, 'Time Fireworks', 2),
+  (6, 'Magic Circus', 3),
+  (7, 'Honey, So Do I', 3),
+  (8, "Sweetie, Let\'s Go Wild", 3),
+  (9, 'She Knows', 3),
+  (10, 'Fantasy For Me', 4),
+  (11, 'Celebration Of More', 4),
+  (12, 'Rock His Everything', 4),
+  (13, 'Home Forever', 4),
+  (14, 'Diamond Power', 4),
+  (15, "Honey, Let's Be Silly", 4),
+  (16, 'Thang Of Thunder', 5),
+  (17, 'Words Of Her Life', 5),
+  (18, 'Without My Streets', 5);
 
 CREATE TABLE usuario_cancao(
 usuario_id INT NOT NULL,
