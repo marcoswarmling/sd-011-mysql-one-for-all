@@ -49,7 +49,7 @@ CREATE TABLE artistas_seguindo(
 artista INT NOT NULL,
 usuario INT NOT NULL,
 CONSTRAINT PRIMARY KEY(artista, usuario),
-FOREIGN KEY (artista) REFERENCES musicas (artista_id),
+FOREIGN KEY (artista) REFERENCES artistas (artista_id),
 FOREIGN KEY (usuario) REFERENCES usuarios (usuario_id)
 );
 
