@@ -7,9 +7,10 @@ BEGIN
     SELECT 
     artista AS 'artista',
     al.nome AS 'album'
-    FROM artistas AS ar
-    INNER JOIN albuns AS al
-    ON ar.artista_id = al.artista_id
+    FROM SpotifyClone.albuns AS al
+    INNER JOIN SpotifyClone.artistas AS ar
+    ON al.artista_id = ar.artista_id
+    WHERE ar.nome = artista
     ORDER BY album;
 END $$
 
