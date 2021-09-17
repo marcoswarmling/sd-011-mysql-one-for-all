@@ -54,7 +54,6 @@ usuario_id INTEGER,
     FOREIGN KEY (musica_id) REFERENCES musicas(musica_id)
 )engine = InnoDB;
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO planos(nome_plano, valor)
 VALUES
