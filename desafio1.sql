@@ -37,7 +37,7 @@ FOREIGN KEY (album_id) REFERENCES albuns (album_id)
 );
 
 CREATE TABLE historico_reproducoes(
-`data` TIMESTAMP DEFAULT CURRENT_timestamp,
+`data` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 musicas_reproduzidas INT NOT NULL,
 usuario INT NOT NULL,
 CONSTRAINT PRIMARY KEY(`data`, musicas_reproduzidas, usuario),
