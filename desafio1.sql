@@ -30,27 +30,27 @@ FOREIGN KEY (artista_id) REFERENCES artistas (artista_id)
 CREATE TABLE musicas(
 musica_id INT PRIMARY KEY AUTO_INCREMENT,
 musica VARCHAR(50) NOT NULL,
-artista_id INT NOT NULL,
 album_id INT NOT NULL,
-FOREIGN KEY (artista_id) REFERENCES artistas (artista_id),
-FOREIGN KEY (album_id) REFERENCES albuns (album_id)
+artista_id INT NOT NULL,
+FOREIGN KEY (album_id) REFERENCES albuns (album_id),
+FOREIGN KEY (artista_id) REFERENCES artistas (artista_id)
 );
 
 CREATE TABLE historico_reproducoes(
 `data` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-musicas_reproduzidas INT NOT NULL,
 usuario INT NOT NULL,
-CONSTRAINT PRIMARY KEY(`data`, musicas_reproduzidas, usuario),
-FOREIGN KEY (musicas_reproduzidas) REFERENCES musicas (musica_id),
-FOREIGN KEY (usuario) REFERENCES usuarios (usuario_id)
+musicas_reproduzidas INT NOT NULL,
+CONSTRAINT PRIMARY KEY(`data`, usuario, musicas_reproduzidas),
+FOREIGN KEY (usuario) REFERENCES usuarios (usuario_id),
+FOREIGN KEY (musicas_reproduzidas) REFERENCES musicas (musica_id)
 );
 
 CREATE TABLE artistas_seguindo(
-artista INT NOT NULL,
 usuario INT NOT NULL,
-CONSTRAINT PRIMARY KEY(artista, usuario),
-FOREIGN KEY (artista) REFERENCES artistas (artista_id),
-FOREIGN KEY (usuario) REFERENCES usuarios (usuario_id)
+artista INT NOT NULL,
+CONSTRAINT PRIMARY KEY(usuario, artista),
+FOREIGN KEY (usuario) REFERENCES usuarios (usuario_id),
+FOREIGN KEY (artista) REFERENCES artistas (artista_id)
 );
 
 INSERT INTO planos(plano, valor_plano)
@@ -62,9 +62,9 @@ VALUE
 INSERT INTO artistas(artista)
 VALUE
 ('Walter Phoenix'),
-('Freedie Shannon'),
+('Peter Strong'),
 ('Lance Day'),
-('Peter Strong');
+('Freedie Shannon');
 
 INSERT INTO usuarios(nome, idade, plano_id)
 VALUE
@@ -77,30 +77,30 @@ INSERT INTO albuns(album, artista_id)
 VALUE
 ('Envious', 1),
 ('Exuberant', 1),
-('Hallowed Steam', 4),
+('Hallowed Steam', 2),
 ('Incandescent', 3),
-('Temporary Culture', 2);
+('Temporary Culture', 4);
 
-INSERT INTO musicas(musica, artista_id, album_id)
+INSERT INTO musicas(musica, album_id, artista_id)
 VALUE
-('Soul For Us', 1, 1),
-('Reflections Of Magic', 1, 1),
+('Soul For Us',	1, 1),
+('Reflections Of Magic', 1,	1),
 ('Dance With Her Own', 1, 1),
-('Troubles Of My Inner Fire', 1, 2),
-('Time Fireworks', 1, 2),
-('Magic Circus', 2, 3),
-('Honey, So Do I', 2, 3),
-("Sweetie, Let's Go Wild", 2, 3),
-('She Knows', 2, 3),
-('Fantasy For Me', 3, 4),
-('Celebration Of More', 3, 4),
-('Rock His Everything', 3, 4),
-('Home Forever', 3, 4),
-('Diamond Power', 3, 4),
-("Honey, Let's Be Silly", 3, 4),
-('Thang Of Thunder', 4, 5),
-('Words Of Her Life', 4, 5),
-('Without My Streets', 4, 5);
+('Troubles Of My Inner Fire', 2, 1),
+('Time Fireworks', 2, 1),
+('Magic Circus', 3, 2),
+('Honey, So Do I', 3, 2),
+("Sweetie, Let's Go Wild", 3, 2),
+('She Knows', 3, 2),
+('Fantasy For Me', 4, 3),
+('Celebration Of More', 4, 3),
+('Rock His Everything', 4, 3),
+('Home Forever', 4,	3),
+('Diamond Power', 4, 3),
+("Honey, Let's Be Silly", 4, 3),
+('Thang Of Thunder', 5,	4),
+('Words Of Her Life', 5, 4),
+('Without My Streets', 5, 4);
 
 INSERT INTO historico_reproducoes(usuario, musicas_reproduzidas)
 VALUE
