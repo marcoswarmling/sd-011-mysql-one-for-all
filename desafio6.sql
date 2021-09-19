@@ -1,5 +1,5 @@
 CREATE VIEW faturamento_atual AS
-SELECT round(min(pl.valor), 2) AS faturamento_minimo,
+SELECT round(min(plano.valor), 2) AS faturamento_minimo,
   round(max(plano_valor), 2) AS faturamento_maximo,
   round(avg(plano_valor), 2) AS faturamento_medio,
   round(sum(plano_valor), 2) AS faturamento_total
