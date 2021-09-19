@@ -5,8 +5,8 @@ CREATE DATABASE SpotifyClone;
 USE SpotifyClone;
 
 CREATE TABLE artists(
-artist_id INT PRIMARY KEY AUTO_INCREMENT,
-artist VARCHAR(45) NOT NULL
+follow_id INT PRIMARY KEY AUTO_INCREMENT,
+artist_id VARCHAR(45) NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE plans(
@@ -26,13 +26,13 @@ FOREIGN KEY (plan_id) REFERENCES plans (plan_id)
 CREATE TABLE albuns(
 album_id INT PRIMARY KEY AUTO_INCREMENT,
 album VARCHAR(45) NULL,
-artist_id INT NOT NULL,
-FOREIGN KEY (artist_id) REFERENCES artists (artist_id)
+follow_id INT NOT NULL,
+FOREIGN KEY (follow_id) REFERENCES artists (follow_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE musics(
 played_music_id INT PRIMARY KEY AUTO_INCREMENT,
-music VARCHAR(60)  NOT NULL,
+music_id VARCHAR(60)  NOT NULL,
 album_id INT NOT NULL,
 FOREIGN KEY (album_id) REFERENCES albuns (album_id)
 ) ENGINE = InnoDB;
@@ -60,7 +60,7 @@ VALUES
 ('Lance Day'),
 ('Freedie Shannon');
 
-INSERT INTO albuns (album, artist_id)
+INSERT INTO albuns (album, follow_id)
 VALUES
 ('Envious', 1),
 ('Exuberant', 1),
