@@ -1,6 +1,6 @@
 CREATE VIEW top_3_artistas AS
 SELECT
-(SELECT A.artist
+(SELECT A.artist_id
 FROM  artists AS a
 WHERE f.artist_id = a.artist_id) AS artista,
 COUNT(user_id) AS seguidores
