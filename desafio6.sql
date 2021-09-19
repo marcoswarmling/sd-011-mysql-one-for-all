@@ -5,4 +5,4 @@ FORMAT(AVG(CEIL (price)), 2) AS faturamento_medio,
 FORMAT(SUM(price), 2) AS faturamento_total
 FROM plans AS p
 INNER JOIN users AS u 
-ON p.plans_id = u.plans_id;
+ON p.plan_id = u.plan_id;
