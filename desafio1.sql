@@ -71,9 +71,9 @@ INSERT INTO albuns (nomeAlbum, artista_id) VALUES ('Envious', 1), ('Exuberant', 
 
 INSERT INTO cancoes (nomeCancao, album_id)
 VALUES
-('Soul for us', 1),
-('Reflections of Magic', 1),
-('Dance with Her Own', 1),
+('Soul For us', 1),
+('Reflections Of Magic', 1),
+('Dance With Her Own', 1),
 ('Troubles Of My Inner Fire', 2),
 ('Time Fireworks', 2),
 ('Magic Circus', 3),
