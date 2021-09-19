@@ -10,4 +10,3 @@ ON arts.usuario_id = u.usuario_id
 GROUP BY `artista`
 ORDER BY `seguidores` DESC, `artista` ASC
 LIMIT 3;
-
