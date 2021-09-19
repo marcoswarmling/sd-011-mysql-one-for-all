@@ -31,7 +31,7 @@ FOREIGN KEY (artist_id) REFERENCES artists (artist_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE musics(
-music_id INT PRIMARY KEY AUTO_INCREMENT,
+played_music_id INT PRIMARY KEY AUTO_INCREMENT,
 music VARCHAR(60)  NOT NULL,
 album_id INT NOT NULL,
 FOREIGN KEY (album_id) REFERENCES albuns (album_id)
@@ -39,18 +39,18 @@ FOREIGN KEY (album_id) REFERENCES albuns (album_id)
 
 CREATE TABLE played_musics(
 user_id INT NOT NULL,
-music_id INT NOT NULL,
+played_music_id INT NOT NULL,
 FOREIGN KEY (user_id) REFERENCES users (user_id),
-FOREIGN KEY (music_id) REFERENCES musics (music_id),
-CONSTRAINT PRIMARY KEY (user_id, music_id)
+FOREIGN KEY (played_music_id) REFERENCES musics (played_music_id),
+CONSTRAINT PRIMARY KEY (user_id, played_music_id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE followers (
 user_id INT NOT NULL,
-artist_id INT NOT NULL,
+follow_id INT NOT NULL,
 FOREIGN KEY (user_id) REFERENCES users (user_id),
-FOREIGN KEY (artist_id) REFERENCES artists (artist_id),
-CONSTRAINT PRIMARY KEY (user_id, artist_id)
+FOREIGN KEY (follow_id) REFERENCES artists (follow_id),
+CONSTRAINT PRIMARY KEY (user_id, follow_id)
 ) ENGINE = InnoDB;
 
 INSERT INTO artists (artist_id)
@@ -102,7 +102,7 @@ VALUES
 ("Words Of Her Life", 4),
 ("Without My Streets", 4);
 
-INSERT INTO followers (user_id, artist_id)
+INSERT INTO followers (user_id, follow_id)
 VALUES
 (1, 1),
 (1, 3),
@@ -113,7 +113,7 @@ VALUES
 (3, 2),
 (4, 4);
 
-INSERT INTO played_musics (user_id, music_id)
+INSERT INTO played_musics (user_id, played_music_id)
 VALUES
 (1, 1),
 (1, 6),
