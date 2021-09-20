@@ -9,4 +9,3 @@ DELETE FROM SpotifyClone.Historico_de_reproducao
 WHERE usuario_id = OLD.usuario_id;
 END $$
 DELIMITER ;
-
