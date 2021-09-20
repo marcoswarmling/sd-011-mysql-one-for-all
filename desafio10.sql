@@ -5,7 +5,7 @@ BEGIN
 DECLARE songs_total INT;
 SELECT COUNT(hr.usuario_id)
 FROM SpotifyClone.Historico_reproducao hr
-WHERE hr.user_id = usuarioID
+WHERE hr.usuario_id = usuarioID
 INTO songs_total;
 RETURN songs_total;
 END $$
