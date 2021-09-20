@@ -58,7 +58,7 @@ INSERT INTO albums (album_id, album, artist_id)
 VALUES
   (1,'Envious', 1),
   (2, 'Exuberant', 1),
-  (3, 'Hallowed Stream', 2),
+  (3, 'Hallowed Steam', 2),
   (4, 'Incandescent', 3),
   (5, 'Temporary Culture', 4);
   
