@@ -1,6 +1,6 @@
 CREATE VIEW perfil_artistas AS
-SELECT art.artist AS artista,
-alb.album_id AS album,
+SELECT art.artist AS artista, 
+alb.album AS album, 
 COUNT(fol.user_id) AS seguidores
 FROM artists AS art
 INNER JOIN albuns AS alb
