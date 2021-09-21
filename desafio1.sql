@@ -15,7 +15,7 @@ VALUES
   ("familiar", 7.99),
   ("universitário", 5.99);
 
-CREATE TABLE SpotifyClone.users (
+CREATE TABLE SpotifyClone.user (
   user_id INT PRIMARY KEY AUTO_INCREMENT,
   user_name VARCHAR(60) NOT NULL,
   age INT,
@@ -118,7 +118,7 @@ VALUES
 CREATE TABLE SpotifyClone.followed (
   user_id INT,
   artist_id INT,
-  FOREIGN KEY (user_id) REFERENCES users (user_id),
+  FOREIGN KEY (user_id) REFERENCES user (user_id),
   FOREIGN KEY (artist_id) REFERENCES artists (artist_id),
   PRIMARY KEY (user_id , artist_id)
 ) ENGINE=InnoDB;
