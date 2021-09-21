@@ -10,3 +10,4 @@ CREATE VIEW top_2_hits_do_momento AS
   ORDER BY reproducoes DESC, cancao ASC
   LIMIT 2;
   
+  

@@ -17,3 +17,4 @@ CREATE VIEW perfil_artistas AS
     artista ASC,
     album ASC;
     
+    

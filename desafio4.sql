@@ -10,3 +10,4 @@ CREATE VIEW top_3_artistas AS
   ORDER BY seguidores DESC, artista ASC
   LIMIT 3;
   
+  
