@@ -4,7 +4,7 @@ CREATE DATABASE SpotifyClone;
 
 CREATE TABLE SpotifyClone.plans (
   plan_id INT PRIMARY KEY AUTO_INCREMENT,
-  plan VARCHAR(20),
+  plan VARCHAR(60),
   value DECIMAL(3,2)
 ) ENGINE=InnoDB;
 
@@ -17,13 +17,13 @@ VALUES
 
 CREATE TABLE SpotifyClone.users (
   user_id INT PRIMARY KEY AUTO_INCREMENT,
-  user_name VARCHAR(20) NOT NULL,
+  user_name VARCHAR(60) NOT NULL,
   age INT,
   plan_id INT,
   FOREIGN KEY (plan_id) REFERENCES SpotifyClone.plans (plan_id)
 ) ENGINE=InnoDB;
 
-INSERT INTO SpotifyClone.users
+INSERT INTO SpotifyClone.user
   (user_name, age, plan_id)
 VALUES
   ("Thati", 23, 1),
@@ -33,7 +33,7 @@ VALUES
 
 CREATE TABLE SpotifyClone.artists (
   artist_id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(50)
+  name VARCHAR(60)
 ) ENGINE=InnoDB;
 
 INSERT INTO SpotifyClone.artists
@@ -44,7 +44,7 @@ VALUES
   ("Lance Day"),
   ("Freedie Shannon");
 
-CREATE TABLE SpotifyClone.albuns (
+CREATE TABLE SpotifyClone.album (
   album_id INT PRIMARY KEY AUTO_INCREMENT,
   name_album VARCHAR(50),
   artist_id INT,
@@ -64,7 +64,7 @@ CREATE TABLE SpotifyClone.songs (
   song_id INT PRIMARY KEY AUTO_INCREMENT,
   name_song VARCHAR(50),
   album_id INT,
-  FOREIGN KEY (album_id) REFERENCES SpotifyClone.albuns (album_id)
+  FOREIGN KEY (album_id) REFERENCES SpotifyClone.album (album_id)
 ) ENGINE=InnoDB;
 
 INSERT INTO SpotifyClone.songs
@@ -92,7 +92,7 @@ VALUES
 CREATE TABLE SpotifyClone.reproduction_history (
   user_id INT NOT NULL,
   song_id INT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES SpotifyClone.users (user_id),
+  FOREIGN KEY (user_id) REFERENCES SpotifyClone.user (user_id),
   FOREIGN KEY (song_id) REFERENCES SpotifyClone.songs (song_id),
   PRIMARY KEY (user_id , song_id)
 ) ENGINE=InnoDB;
