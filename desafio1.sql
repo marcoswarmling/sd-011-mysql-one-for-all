@@ -13,7 +13,7 @@ INSERT INTO SpotifyClone.plans
 VALUES
   ("gratuito", 0.00),
   ("familiar", 7.99),
-  ("universitário", 5.99);  
+  ("universitário", 5.99);
 
 CREATE TABLE SpotifyClone.users (
   user_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -25,7 +25,7 @@ CREATE TABLE SpotifyClone.users (
 
 INSERT INTO SpotifyClone.users
   (user_name, age, plan_id)
-VALUES 
+VALUES
   ("Thati", 23, 1),
   ("Cintia", 35, 2),
   ("Bill", 20, 3),
@@ -134,4 +134,3 @@ VALUES
   (3, 2),
   (3, 1),
   (4, 4);
-  
