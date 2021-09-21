@@ -4,9 +4,7 @@ CREATE VIEW faturamento_atual AS
     MAX(plans.value) AS faturamento_maximo,
     ROUND(AVG(plans.value),2) AS faturamento_medio,
     sum(plans.value) AS faturamento_total
-  FROM 
+  FROM
     SpotifyClone.plans AS plans
       INNER JOIN
     SpotifyClone.user AS users ON users.plan_id = plans.plan_id;
-    
-    
